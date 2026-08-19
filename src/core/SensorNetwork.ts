@@ -3,14 +3,6 @@ import type { SensorReading } from "../types";
 
 type ReadingListener = (reading: SensorReading) => void;
 
-/**
- * Owns a set of SeismicSensor instances and polls them on a fixed cadence.
- * Implements a simple Observer pattern so the UI (and the AlertManager)
- * can subscribe without knowing how the polling is implemented.
- *
- * The polling loop itself is a macrotask: every tick is scheduled through
- * setInterval, which enqueues its callback on the event loop's task queue.
- */
 export class SensorNetwork {
   private readonly sensors: SeismicSensor[] = [];
   private listeners: ReadingListener[] = [];
@@ -36,7 +28,6 @@ export class SensorNetwork {
     return this.intervalId !== null;
   }
 
-  /** Starts the macrotask polling loop (setInterval). */
   public startPolling(intervalMs = 2200): void {
     if (this.intervalId !== null) return;
 

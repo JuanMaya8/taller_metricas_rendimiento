@@ -156,8 +156,7 @@ function App() {
         </div>
         <h1>Galeras Watch</h1>
         <p className="app-subtitle">
-          A real-time monitoring console for Volcán Galeras, built to put the JavaScript event
-          loop, task &amp; microtask scheduling, and INP under a magnifying glass.
+          A real-time monitoring console for Volcán Galeras, event loop, task and microtask scheduling
         </p>
         <SeismographStrip readings={readings} />
       </header>

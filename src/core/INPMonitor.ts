@@ -4,20 +4,6 @@ import type { INPRating } from "../types";
 type INPListener = (valueMs: number, rating: INPRating) => void;
 type RecentInteractionListener = (latencyMs: number) => void;
 
-/**
- * Wraps the official web-vitals `onINP` reporter behind a small class API.
- *
- * INP (Interaction to Next Paint) is measured by the browser itself using
- * the Event Timing API: for every click, tap or keypress it records the
- * time between the interaction and the next frame the browser paints.
- * web-vitals keeps the worst interaction observed so far and reports it
- * every time it changes, which is exactly what this class relays to the UI.
- *
- * Google's published thresholds (also exported as INPThresholds):
- *   good            <= 200ms
- *   needs-improvement  200ms - 500ms
- *   poor            >  500ms
- */
 export class INPMonitor {
   private listeners: INPListener[] = [];
   private recentListeners: RecentInteractionListener[] = [];
@@ -45,11 +31,6 @@ export class INPMonitor {
       { reportAllChanges: true },
     );
 
-    // Also attach lightweight listeners to report the latency for the most
-    // recent interaction. This is useful for UI feedback: web-vitals' INP is
-    // defined as the *worst* interaction observed so far and therefore only
-    // grows. To show a changing number when users interact repeatedly we
-    // report a "last interaction" latency using a double rAF technique.
     this.boundHandleInteraction = (ev: Event) => {
       const start = performance.now();
       requestAnimationFrame(() => requestAnimationFrame(() => {

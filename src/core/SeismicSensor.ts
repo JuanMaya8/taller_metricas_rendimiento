@@ -1,10 +1,5 @@
 import type { SensorReading } from "../types";
 
-/**
- * Represents a single physical monitoring station on the Galeras volcano.
- * Each instance owns its own baseline and produces slightly noisy,
- * occasionally spiking readings, the way a real seismic station would.
- */
 export class SeismicSensor {
   private readonly id: string;
   private readonly stationName: string;
@@ -24,7 +19,6 @@ export class SeismicSensor {
     return this.stationName;
   }
 
-  /** Produces one simulated real-time reading for this station. */
   public generateReading(): SensorReading {
     const noise = (Math.random() - 0.5) * 1.4;
     const spike = Math.random() > 0.92 ? Math.random() * 3 : 0;

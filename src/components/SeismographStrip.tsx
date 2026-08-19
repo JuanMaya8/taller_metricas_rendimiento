@@ -7,11 +7,7 @@ interface Props {
   height?: number;
 }
 
-/**
- * Renders recent seismic magnitude readings as a scrolling seismograph
- * trace, the way a real drum recorder would draw one line per station tick.
- * This is a pure presentational component; it owns no timers of its own.
- */
+
 export function SeismographStrip({ readings, width = 900, height = 120 }: Props) {
   const points = useMemo(() => {
     if (readings.length === 0) return "";

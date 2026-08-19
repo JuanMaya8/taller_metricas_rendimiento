@@ -2,18 +2,6 @@ import type { AlertLevel, SensorReading, VolcanoAlert } from "../types";
 
 type AlertListener = (alert: VolcanoAlert) => void;
 
-/**
- * Classifies incoming sensor readings and notifies subscribers.
- *
- * Critical alerts (orange/red) are dispatched as MICROTASKS via
- * Promise.resolve().then(), so they are guaranteed to reach the UI before
- * the browser paints the next frame or handles the next macrotask, such as
- * the following sensor poll.
- *
- * Routine alerts (yellow) are dispatched as MACROTASKS via setTimeout(0),
- * because a short, browser-scheduled delay is acceptable for non-critical
- * information and it avoids competing with more urgent microtask work.
- */
 export class AlertManager {
   private listeners: AlertListener[] = [];
   private counter = 0;
