@@ -1,0 +1,77 @@
+:root {
+  --bg: #0b0d09;
+  --panel: #14170f;
+  --panel-alt: #191d13;
+  --panel-raised: #1e2317;
+  --border: #2a2f20;
+  --border-soft: #20241a;
+  --ash: #9a9c86;
+  --ash-dim: #6c6e5c;
+  --cream: #ece7d6;
+  --lava: #ff5a2e;
+  --lava-dim: #7a3220;
+  --sulfur: #e8c547;
+  --phosphor: #5ee08a;
+  --danger: #ff3b3b;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle at 15% -10%, rgba(255, 90, 46, 0.08), transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(94, 224, 138, 0.05), transparent 40%);
+  color: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--phosphor);
+  outline-offset: 2px;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
