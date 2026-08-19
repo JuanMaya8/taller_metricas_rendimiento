@@ -31,7 +31,7 @@ export class INPMonitor {
       { reportAllChanges: true },
     );
 
-    this.boundHandleInteraction = (ev: Event) => {
+    this.boundHandleInteraction = (_ev: Event) => {
       const start = performance.now();
       requestAnimationFrame(() => requestAnimationFrame(() => {
         const latency = performance.now() - start;
